@@ -2,6 +2,9 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Button = require('react-bootstrap').Button;
 var ButtonToolbar = require('react-bootstrap').ButtonToolbar;
+var Panel = require('react-bootstrap').Panel;
+var Tooltip = require('react-bootstrap').Tooltip;
+var OverlayTrigger = require('react-bootstrap').OverlayTrigger;
 //var Firebase = require('firebase');
 
 //var fbRef = new Firebase("https://<firebase-server>.firebaseio.com/");
@@ -23,6 +26,7 @@ var Hello = React.createClass({
 	getInitialState: function(){
 		return {
 			geometry: 'cylinder',
+			panelVisible: false,
 			torusVisible: false,
 			cylinderVisible: false,
 			popVisible: true,
@@ -108,13 +112,37 @@ var Hello = React.createClass({
 	},
 
 	render: function () {
-		return <ButtonToolbar className="buttons">
-			<Button bsStyle={this.state.popVisible      ? "success":"default"} onClick={this.handlePopClick}>Popsicle</Button>
-			<Button bsStyle={this.state.torusVisible    ? "success":"default"} onClick={this.handleTorusClick}>Torus</Button>
-			<Button bsStyle={this.state.cylinderVisible ? "success":"default"} onClick={this.handleCylinderClick}>Cylinder</Button>
-			<Button bsStyle={this.state.flatPopVisible  ? "success":"default"} onClick={this.handleFlatPopClick}>Flat Popsicle</Button>
-			<Button bsStyle="primary" href="http://107.170.100.207:8000/sketches/lab/metal-shine-edge.jpg">Metal Material</Button>
-		</ButtonToolbar>
+		return <div>
+			{this.showAbout()}
+			<ButtonToolbar className="buttons">
+				<Button bsStyle={this.state.popVisible      ? "success":"default"} onClick={this.handlePopClick}>Popsicle</Button>
+				<Button bsStyle={this.state.torusVisible    ? "success":"default"} onClick={this.handleTorusClick}>Torus</Button>
+				<Button bsStyle={this.state.cylinderVisible ? "success":"default"} onClick={this.handleCylinderClick}>Cylinder</Button>
+				<Button bsStyle={this.state.flatPopVisible  ? "success":"default"} onClick={this.handleFlatPopClick}>Flat Popsicle</Button>
+				<Button bsStyle="primary" href="http://107.170.100.207:8000/sketches/lab/metal-shine-edge.jpg">Metal Material</Button>
+			</ButtonToolbar>
+		</div>
+	},
+
+	showAbout: function(){
+		if(this.state.panelVisible){
+			return <Panel className="about" onClick={this.handleAboutClick}>
+				Hey here are some notes about the visualization. It uses three.js. It consists of a 1) a geometry, and 2) a shader. The shader is what creates the oily texture. Shaders are weird because they are written in GLSL, which I'm not 100% proficient in yet. I can definitely manipulate existing shaders from other sites. I'm not to the point where I can create them from scratch. This shader takes an image and wraps it around the geometry. While the geometry roates, the shader stays still (I think). You can see the image that the shader is using <a href="http://107.170.100.207:8000/sketches/lab/metal-shine-edge.jpg">here</a>. <br/><br/> Anyways, the geometry in this visualization is using built in three.js primitives (cube, ring, etc). There's a bunch of them in three.js. The popsicle is built manually using 2 cube geometries. I split the cubes out and took off the rounding to show how works. Just click <a href="#" onClick={this.handleFlatPopClick}>Flat Popsicle</a> to see this. You can also click on <a href="#" onClick={this.handleTorusClick}>Torus</a> and <a href="#" onClick={this.handleCylinderClick}>Cylinder</a> to see some other built in three.js primitives. It should be possible to load in an extrnal OBJ file as a geometry, but I haven't had the chance to get that working yet. Let me know if you're interested in that and we can work on it. 
+			</Panel>
+		} else {
+			return <Button className="about" onClick={this.handleAboutClick}>About</Button>
+		}
+	},
+
+	handleAboutClick: function(){
+		this.setState({ panelVisible: !this.state.panelVisible})
+	},
+
+	showPanel: function(){
+		console.log('ok');
+		<Panel onClick={this.handleAboutClick}>
+			ok
+		</Panel>
 	},
 
 	handleFlatPopClick: function(){
