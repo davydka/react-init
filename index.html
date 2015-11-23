@@ -14,13 +14,25 @@
 			top:0;
 			left:0;
 			display:block;
+			z-index:0;
 		}
 		
+		.about {
+			position: absolute;
+			top: 40px;
+			left: 50%;
+			transform: translate(-50%, 0);
+			z-index:1;
+			max-width: 80vw;
+			cursor: pointer;
+		}
+
 		.buttons {
 			position: absolute;
 			bottom: 40px;
 			width:100%;
 			text-align:center;
+			z-index:1;
 		}
 
 		#container {
