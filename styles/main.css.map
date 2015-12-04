@@ -4,6 +4,6 @@
 	"sources": [
 		"src/main.scss"
 	],
-	"mappings": "",
+	"mappings": "AAAA,IAAI,CAAC;EACJ,QAAQ,EAAE,MAAO,GACjB;;AAED,gBAAgB,CAAC;EAChB,OAAO,EAAC,CAAE,GACV",
 	"names": []
 }
