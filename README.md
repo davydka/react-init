@@ -23,7 +23,7 @@ First steps are to checkout the boilerplate and link it to your own git repo.
 * Remove this init from the git remote: `git remote rm origin`
 * If needed, create your new github repo from the command line: `curl -u 'USER' https://api.github.com/user/repos -d '{"name":"REPO"}'`
 	* replace USER with your username and REPO with your repository/application name
-* Add your remote: `git remote add origin https://github.com:USER/REPO.git`
+* Add your remote: `git remote add origin https://github.com/USER/REPO.git`
 	* again, replace USER with your username and REPO with your repository/application name
 * Push to your new remote repo: `git push origin master`
 
