@@ -1,11 +1,11 @@
-#Project Boilerplate
+# Project Boilerplate
 A simple starter repo for new projects. Uses a variety of tools including:
 
 * React
 * Webpack
 * NPM
 
-##Getting Started
+## Getting Started
 * Clone the repo: `git clone https://github.com/davydka/react-init`
 * Enter your repo's directory: `cd react-init`
 
@@ -15,7 +15,7 @@ npm run watch
 pm2 start http-server --name="app" -- -p 1981 -c-1 -s
 pm2 start browser-sync --name="app-sync" --interpreter="none" -- start --files '<APP-DIR>build/bundle.js' --proxy localhost:1981 --reload-delay 100 --no-ui --port 1881 --no-notify --no-open
 ```
-##Building as a new Repo
+## Building as a new Repo
 First steps are to checkout the boilerplate and link it to your own git repo.
 
 * Clone the repo: `git clone https://github.com/davydka/react-init.git folder-name`
